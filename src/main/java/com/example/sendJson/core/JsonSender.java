@@ -1,4 +1,4 @@
-package com.example.sendJson.rabbitmq;
+package com.example.sendJson.core;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
