@@ -11,18 +11,18 @@ public class JsonSender {
 
     private final static String QUEUE_NAME = "xml-get";
 
-    public void send() throws Exception {
+    public void send(String json) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            String message = jsonString();
-            channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-            System.out.println("Sent '" + message + "'");
+//            String message = json;
+            channel.basicPublish("", QUEUE_NAME, null, json.getBytes());
+            System.out.println("Sent '" + json + "'");
         }
 
     }
-    public static String jsonString() throws Exception {
+    public static String jsonReader() throws Exception {
 
         FileReader fileReader = new FileReader("src/main/resources/file.json");
         Scanner scan = new Scanner(fileReader);

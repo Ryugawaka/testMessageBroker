@@ -11,9 +11,9 @@ public class JsonSenderController {
 
     @RequestMapping("/send")
     @PostMapping
-    public String jsonSender() throws Exception{
+    public String jsonSender(String json) throws Exception{
         JsonSender send = new JsonSender();
-        send.send();
+        send.send(json);
         return "message sent";
     }
 }
